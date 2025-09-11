@@ -363,3 +363,4 @@
   "explorer.confirmDelete": true,
   "emmet.triggerExpansionOnTab": true
 }
+ 
