@@ -1,4 +1,125 @@
 {
+  "editor.fontFamily": "Consolas",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": "off",
+  "editor.autoIndent": "full",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  "editor.wordWrap": "off",
+  "editor.renderWhitespace": "boundary",
+  "editor.renderControlCharacters": false,
+  "editor.lineNumbers": "on",
+  "editor.renderLineHighlight": "line",
+  "editor.matchBrackets": "always",
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": "active",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.occurrencesHighlight": "singleFile",
+  "editor.hover.enabled": true,
+  "editor.parameterHints.enabled": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.suggest.preview": true,
+  "editor.suggest.matchOnWordStartOnly": false,
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.codeLens": false,
+  "editor.lightbulb.enabled": "on",
+  "editor.glyphMargin": true,
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": "off",
+    "strings": "off"
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.smoothScrolling": false,
+  "workbench.list.smoothScrolling": false,
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 3,
+  "editor.minimap.enabled": false,
+  "editor.rulers": [
+    169
+  ],
+  "editor.unicodeHighlight.invisibleCharacters": true,
+  "editor.unicodeHighlight.ambiguousCharacters": true,
+  "editor.unicodeHighlight.nonBasicASCII": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1500,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/.cache": true,
+    "**/__pycache__": true,
+    "**/.venv": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/.cache": true,
+    "**/__pycache__": true,
+    "**/.venv": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.next/**": true,
+    "**/.turbo/**": true,
+    "**/.cache/**": true,
+    "**/__pycache__/**": true,
+    "**/.venv/**": true,
+    "**/out/**": true,
+    "**/bin/**": true
+  },
+  "git.autofetch": false,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.suggestSmartCommit": false,
+  "git.openRepositoryInParentFolders": "always",
+  "git.pruneOnFetch": true,
+  "terminal.integrated.fontFamily": "Consolas",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.enablePersistentSessions": true,
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "workbench.iconTheme": "vs-minimal",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.wrapTabs": true,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 12,
+  "workbench.editor.focusRecentEditorAfterClose": false,
+  "workbench.quickOpen.preserveInput": true,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.feedback.enabled": false,
+  "extensions.ignoreRecommendations": true,
+  "chat.agent.enabled": false,
+  "typescript.suggest.enabled": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "javascript.suggest.enabled": true,
+  "emmet.triggerExpansionOnTab": true,
   "workbench.colorCustomizations": {
     "editor.background": "#1a1b26",
     "editor.foreground": "#C3CCDF",
@@ -19,7 +140,7 @@
     "editorWarning.foreground": "#FFD11A",
     "editorInfo.foreground": "#6FD6F5",
     "editorHint.foreground": "#A6D27A",
-    "editorBracketMatch.background": "#2E344600",
+    "editorBracketMatch.background": "#00000000",
     "editorBracketMatch.border": "#8C8AF0",
     "diffEditor.insertedTextBackground": "#A6D27A33",
     "diffEditor.removedTextBackground": "#FF6E6E33",
@@ -90,19 +211,6 @@
       },
       {
         "scope": [
-          "keyword",
-          "keyword.control",
-          "keyword.operator",
-          "storage.type",
-          "storage.modifier"
-        ],
-        "settings": {
-          "foreground": "#B879BE",
-          "fontStyle": "bold"
-        }
-      },
-      {
-        "scope": [
           "string",
           "string.interpolated",
           "string.template"
@@ -166,12 +274,24 @@
       },
       {
         "scope": [
-          "keyword.other.import",
-          "keyword.control.import",
-          "keyword.other.export"
+          "keyword",
+          "keyword.control",
+          "keyword.operator",
+          "storage.type",
+          "storage.modifier"
         ],
         "settings": {
-          "foreground": "#88C9E8",
+          "foreground": "#B879BE",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": [
+          "entity.name.tag",
+          "support.tag"
+        ],
+        "settings": {
+          "foreground": "#FF8686",
           "fontStyle": "bold"
         }
       },
@@ -183,16 +303,6 @@
         ],
         "settings": {
           "foreground": "#A0BD00"
-        }
-      },
-      {
-        "scope": [
-          "entity.name.tag",
-          "support.tag"
-        ],
-        "settings": {
-          "foreground": "#FF8686",
-          "fontStyle": "bold"
         }
       },
       {
@@ -234,133 +344,5 @@
       "other": "on",
       "strings": "off"
     }
-  },
-  // --- Editing ergonomics & signal ---
-  "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "modificationsIfAvailable",
-  "editor.autoIndent": "full",
-  "editor.insertSpaces": true,
-  "editor.tabSize": 4,
-  "editor.wordWrap": "bounded",
-  "editor.wordWrapColumn": 169,
-  "editor.acceptSuggestionOnEnter": "smart",
-  "editor.suggestOnTriggerCharacters": false,
-  "editor.quickSuggestions": {
-    "other": false,
-    "comments": "off",
-    "strings": "off"
-  },
-  "editor.suggest.showWords": false,
-  "editor.cursorStyle": "line",
-  "editor.cursorBlinking": "phase",
-  "editor.renderWhitespace": "boundary",
-  "editor.renderControlCharacters": false,
-  "editor.occurrencesHighlight": "singleFile",
-  "editor.parameterHints.enabled": true,
-  "editor.inlineSuggest.enabled": true,
-  "editor.smoothScrolling": false,
-  "editor.codeLens": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit"
-  },
-  "editor.lineNumbers": "on",
-  "editor.folding": true,
-  "editor.foldingStrategy": "indentation",
-  "editor.matchBrackets": "always",
-  "editor.stickyScroll.enabled": true,
-  "editor.stickyScroll.maxLineCount": 3,
-  "editor.linkedEditing": true,
-  "editor.minimap.enabled": false,
-  "editor.rulers": [
-    169
-  ],
-  // --- Bracket pairs explicit w/ custom colors ---
-  "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": "active",
-  "editor.guides.bracketPairsHorizontal": "active",
-  // --- Files, diffs, safety ---
-  "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 2000,
-  "files.trimTrailingWhitespace": true,
-  "files.trimFinalNewlines": true,
-  "files.insertFinalNewline": true,
-  "files.eol": "\n",
-  "diffEditor.ignoreTrimWhitespace": true,
-  // --- Performance: search & watchers ---
-  "files.exclude": {
-    "**/.git": true,
-    "**/.DS_Store": true,
-    "**/node_modules": true,
-    "**/dist": true,
-    "**/build": true,
-    "**/.next": true,
-    "**/.turbo": true,
-    "**/.cache": true,
-    "**/__pycache__": true,
-    "**/.venv": true
-  },
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/dist": true,
-    "**/build": true,
-    "**/.next": true,
-    "**/.turbo": true,
-    "**/.cache": true,
-    "**/__pycache__": true,
-    "**/.venv": true
-  },
-  "files.watcherExclude": {
-    "**/node_modules/**": true,
-    "**/.git/**": true,
-    "**/dist/**": true,
-    "**/build/**": true,
-    "**/.next/**": true,
-    "**/.turbo/**": true,
-    "**/.cache/**": true,
-    "**/__pycache__/**": true,
-    "**/.venv/**": true
-  },
-  // --- Unicode guardrails ---
-  "editor.unicodeHighlight.invisibleCharacters": true,
-  "editor.unicodeHighlight.ambiguousCharacters": true,
-  "editor.unicodeHighlight.nonBasicASCII": true,
-  // --- UI / Workbench ---
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.editor.wrapTabs": true,
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 12,
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.focusRecentEditorAfterClose": false,
-  // --- Terminal ---
-  "terminal.integrated.fontFamily": "Consolas",
-  "terminal.integrated.fontSize": 14,
-  "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.scrollback": 200000,
-  "terminal.integrated.enablePersistentSessions": true,
-  "terminal.integrated.persistentSessionReviveProcess": "never",
-  // --- Git ---
-  "git.autofetch": true,
-  "git.confirmSync": false,
-  "git.enableSmartCommit": true,
-  "git.suggestSmartCommit": false,
-  "git.openRepositoryInParentFolders": "always",
-  "git.pruneOnFetch": true,
-  // --- Extensions / Telemetry ---
-  "typescript.suggest.completeFunctionCalls": true,
-  "typescript.suggest.enabled": true,
-  "javascript.suggest.enabled": true,
-  "editor.suggest.snippetsPreventQuickSuggestions": true,
-  "editor.suggest.matchOnWordStartOnly": false,
-  "editor.suggest.preview": true,
-  "chat.agent.enabled": false,
-  "telemetry.feedback.enabled": false,
-  "extensions.ignoreRecommendations": true,
-  // --- Fonts ---
-  "editor.fontFamily": "Consolas",
-  "editor.fontSize": 14,
-  // --- Security ---
-  "explorer.confirmDelete": true,
-  "emmet.triggerExpansionOnTab": true
+  }
 }
- 
