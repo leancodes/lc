@@ -1,0 +1,23 @@
+import os, sys
+from pathlib import Path
+
+F=("notebooks","src","data/raw","data/processed")
+
+def create(parent: str, name: str="repo") -> Path:
+    p=Path(parent).expanduser().resolve()
+    if not p.is_dir(): raise NotADirectoryError(p)
+    if not os.access(p, os.W_OK): raise PermissionError(p)
+    r=p/name
+    if r.exists() and not r.is_dir(): raise FileExistsError(r)
+    for d in (r.joinpath(x) for x in F):
+        d.mkdir(parents=True, exist_ok=True)
+    print(str(r.resolve()))
+    return r
+
+if __name__=="__main__":
+    if len(sys.argv)<2: 
+        print("Usage: python script.py <parent> [name]", file=sys.stderr); sys.exit(2)
+    parent=sys.argv[1]
+    name=sys.argv[2] if len(sys.argv)>2 else "repo"
+    try: create(parent, name)
+    except Exception as e: print(e, file=sys.stderr); sys.exit(1)
