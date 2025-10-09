@@ -1,0 +1,61 @@
+import os, sys, shutil
+from pathlib import Path
+from datetime import datetime, timedelta
+
+BINS_ROOT = r"C:\Users\YourName\Bins"
+CUTOFF_DAYS = 183
+
+def _classify(p: Path, cutoff_ts: float) -> str:
+    try:
+        atime = os.stat(p, follow_symlinks=False).st_atime
+    except Exception:
+        return "dirty"
+    return "clean" if (len(p.name) < 18 and atime >= cutoff_ts) else "dirty"
+
+def _ensure_dir(d: Path):
+    d.mkdir(parents=True, exist_ok=True)
+    if not d.is_dir():
+        raise NotADirectoryError(str(d))
+
+def _unique_dest(dest_dir: Path, name: str) -> Path:
+    c = dest_dir / name
+    if not c.exists():
+        return c
+    stem, suffix = Path(name).stem, Path(name).suffix
+    i = 1
+    while True:
+        cand = dest_dir / f"{stem}_{i}{suffix}"
+        if not cand.exists():
+            return cand
+        i += 1
+
+def _move_one(src: Path, dest_dir: Path):
+    shutil.move(str(src), str(_unique_dest(dest_dir, src.name)))
+
+def sort_to_bins(bins_root_abs: str, scan_root_abs: str):
+    bins_root = Path(bins_root_abs).expanduser().resolve()
+    scan_root = Path(scan_root_abs).expanduser().resolve()
+    if not bins_root.is_dir():
+        raise NotADirectoryError(str(bins_root))
+    if not scan_root.is_dir():
+        raise NotADirectoryError(str(scan_root))
+    clean_dir = bins_root / "dir_clean"
+    dirty_dir = bins_root / "dir_dirty"
+    _ensure_dir(clean_dir)
+    _ensure_dir(dirty_dir)
+    cutoff_ts = (datetime.now() - timedelta(days=CUTOFF_DAYS)).timestamp()
+    skip = {clean_dir.resolve(), dirty_dir.resolve()}
+    for dirpath, dirnames, filenames in os.walk(scan_root, topdown=True, followlinks=False):
+        cur = Path(dirpath).resolve()
+        dirnames[:] = [d for d in dirnames if (cur / d).resolve() not in skip]
+        for fn in filenames:
+            src = (cur / fn)
+            try:
+                if not src.is_file():
+                    continue
+                if any(parent.resolve() in skip for parent in src.parents):
+                    continue
+                bucket = _classify(src, cutoff_ts)
+                _move_one(src, clean_dir if bucket == "clean" else dirty_dir)
+            except Exception:
+                pass
