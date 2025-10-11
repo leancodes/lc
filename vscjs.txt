@@ -599,6 +599,127 @@
         "settings": {
           "foreground": "#6d96d0"
         }
+      },
+      {
+        "name": "VBA control flow (If/Else/Select/Loop/With/Exit)",
+        "scope": [
+          "source.vba keyword.control",
+          "source.vb keyword.control",
+          "keyword.control.conditional.vba",
+          "keyword.control.loop.vba",
+          "keyword.control.with.vba",
+          "keyword.control.flow.vba"
+        ],
+        "settings": {
+          "foreground": "#f49f31"
+        }
+      },
+      {
+        "name": "VBA error handling (On Error / Resume / Err)",
+        "scope": [
+          "source.vba keyword.control.exception",
+          "source.vb keyword.control.exception",
+          "support.class.err.vba",
+          "support.class.err.vb"
+        ],
+        "settings": {
+          "foreground": "#fff799"
+        }
+      },
+      {
+        "name": "ByRef / ByVal / Optional / ParamArray",
+        "scope": [
+          "source.vba storage.modifier",
+          "source.vb storage.modifier",
+          "storage.modifier.byref.vba",
+          "storage.modifier.byval.vba",
+          "storage.modifier.optional.vba",
+          "storage.modifier.paramarray.vba"
+        ],
+        "settings": {
+          "foreground": "#fff799"
+        }
+      },
+      {
+        "name": "VBA types & constants",
+        "scope": [
+          "source.vba storage.type",
+          "source.vb storage.type",
+          "constant.language.vba",
+          "constant.language.true.vba",
+          "constant.language.false.vba",
+          "constant.language.nothing.vba",
+          "constant.language.empty.vba",
+          "constant.language.null.vba"
+        ],
+        "settings": {
+          "foreground": "#6d96d0"
+        }
+      },
+      {
+        "name": "VBA preprocessor (#If/#Else/#End, #Const)",
+        "scope": [
+          "source.vba keyword.control.directive",
+          "source.vb keyword.control.directive",
+          "meta.preprocessor.vba",
+          "meta.preprocessor.vb"
+        ],
+        "settings": {
+          "foreground": "#6d96d0"
+        }
+      },
+      {
+        "name": "Property / Implements / WithEvents / RaiseEvent",
+        "scope": [
+          "source.vba storage.type.property",
+          "source.vb storage.type.property",
+          "keyword.other.property.vba",
+          "keyword.other.implements.vba",
+          "storage.modifier.withevents.vba",
+          "keyword.other.raiseevent.vba",
+          "keyword.other.property.vb",
+          "keyword.other.implements.vb",
+          "storage.modifier.withevents.vb",
+          "keyword.other.raiseevent.vb"
+        ],
+        "settings": {
+          "foreground": "#f49f31"
+        }
+      },
+      /* ===== Interop / Declare / PtrSafe ===== */
+      {
+        "name": "Declare / Lib / Alias / PtrSafe",
+        "scope": [
+          "source.vba storage.type.declaration",
+          "source.vb storage.type.declaration",
+          "keyword.other.declare.vba",
+          "keyword.other.lib.vba",
+          "keyword.other.alias.vba",
+          "storage.modifier.ptrsafe.vba",
+          "keyword.other.declare.vb",
+          "keyword.other.lib.vb",
+          "keyword.other.alias.vb",
+          "storage.modifier.ptrsafe.vb"
+        ],
+        "settings": {
+          "foreground": "#6d96d0"
+        }
+      },
+      /* ===== Operators ===== */
+      {
+        "name": "Operators (And/Or/Not/Like/Is/TypeOf … Is)",
+        "scope": [
+          "source.vba keyword.operator",
+          "source.vb keyword.operator",
+          "keyword.operator.logical.vba",
+          "keyword.operator.comparison.vba",
+          "keyword.operator.like.vba",
+          "keyword.operator.is.vba",
+          "keyword.operator.typeof.vba"
+        ],
+        "settings": {
+          "foreground": "#f49f31"
+        }
       }
     ]
   },
@@ -636,7 +757,7 @@
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "bounded",
-  "editor.wordWrapColumn": 169,
+  "editor.wordWrapColumn": 122,
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.suggestOnTriggerCharacters": false,
   "editor.quickSuggestions": {
@@ -700,8 +821,8 @@
   },
   "workbench.editor.enablePreview": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
-  "terminal.integrated.fontFamily": "Monaco",
-  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontFamily": "Consolas",
+  "terminal.integrated.fontSize": 14,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.scrollback": 69000,
   "terminal.integrated.enablePersistentSessions": true,
@@ -714,13 +835,11 @@
   "git.pruneOnFetch": true,
   "typescript.suggest.completeFunctionCalls": true,
   "javascript.suggest.enabled": true,
-  "editor.snippetsPreventQuickSuggestions": true,
   "editor.suggest.matchOnWordStartOnly": false,
-  "telemetry.telemetryLevel": "off",
   "chat.agent.enabled": false,
   "telemetry.feedback.enabled": false,
   "extensions.ignoreRecommendations": true,
-  "editor.fontFamily": "Monaco",
+  "editor.fontFamily": "Consolas",
   "editor.fontSize": 14,
   "explorer.confirmDelete": true,
   "emmet.triggerExpansionOnTab": true,
