@@ -1,5 +1,99 @@
 Option Explicit
 
+Public Sub ToggleTwoColumnTypesetting()
+    Dim rng As Range, inTbl As Boolean
+    Dim sec As Section, app As Application
+    Set app = Word.Application
+    Set rng = Selection.Range
+    inTbl = Selection.Information(wdWithInTable)
+
+    On Error GoTo CleanFail
+    app.ScreenUpdating = False
+    app.Options.Pagination = False
+
+    ' Ensure there is at least one section
+    If ActiveDocument.Sections.Count = 0 Then Exit Sub
+    Set sec = rng.Sections(1)
+
+    ' CASE A: Whole doc not yet two-columns → make current section two-columns
+    If sec.PageSetup.TextColumns.Count < 2 Then
+        MakeSectionTwoColumns sec
+        GoTo CleanExit
+    End If
+
+    ' At this point, we are in a 2-col section.
+    ' CASE B: User wants a single-column block here (for a table, figure, etc.)
+    If inTbl Then
+        ' Breaks cannot be inside a table: create the block around the table.
+        CreateSingleColumnBlockAroundTable Selection.Tables(1)
+    Else
+        CreateSingleColumnBlockAtSelection rng
+    End If
+
+CleanExit:
+    app.Options.Pagination = True
+    app.ScreenUpdating = True
+    Exit Sub
+
+CleanFail:
+    app.Options.Pagination = True
+    app.ScreenUpdating = True
+    MsgBox "Toggle failed: " & Err.Description, vbExclamation, "Typesetting Macro"
+End Sub
+
+'=== helpers ===
+Private Sub MakeSectionTwoColumns(ByVal s As Section)
+    With s.PageSetup.TextColumns
+        .SetCount 2
+        .EvenlySpaced = True
+    End With
+End Sub
+
+Private Sub MakeSectionOneColumn(ByVal s As Section)
+    With s.PageSetup.TextColumns
+        .SetCount 1
+        .EvenlySpaced = True
+    End With
+End Sub
+
+Private Sub CreateSingleColumnBlockAtSelection(ByVal r As Range)
+    Dim cur As Range: Set cur = r.Duplicate
+    cur.Collapse wdCollapseStart
+    cur.InsertBreak wdSectionBreakContinuous        ' open block
+    cur.SetRange cur.End, cur.End                   ' move into new section
+    MakeSectionOneColumn cur.Sections(1)
+
+    ' Place a closing two-column section break right after the paragraph
+    Dim afterR As Range: Set afterR = cur.Duplicate
+    afterR.Collapse wdCollapseEnd
+    afterR.InsertBreak wdSectionBreakContinuous
+    afterR.SetRange afterR.End, afterR.End
+    MakeSectionTwoColumns afterR.Sections(1)
+
+    ' Return caret to start of single-column block
+    cur.Select
+End Sub
+
+Private Sub CreateSingleColumnBlockAroundTable(ByVal t As Table)
+    Dim beforeR As Range, afterR As Range
+    Set beforeR = t.Range.Duplicate
+    beforeR.Collapse wdCollapseStart
+    beforeR.InsertBreak wdSectionBreakContinuous
+
+    ' The table lives in the new middle section now:
+    MakeSectionOneColumn beforeR.Sections(1)
+
+    Set afterR = t.Range.Duplicate
+    afterR.Collapse wdCollapseEnd
+    afterR.InsertBreak wdSectionBreakContinuous
+    MakeSectionTwoColumns afterR.Sections(1)
+
+    t.Range.Select
+End Sub
+
+
+Option Explicit
+
 '== Public entry point ==
 Public Sub FinalizeForExport_MergeRedundantSections()
     Dim i As Long
